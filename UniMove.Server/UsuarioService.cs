@@ -2,13 +2,8 @@ using Microsoft.Data.Sqlite;
 
 namespace UniMove.Server;
 
-/// <summary>
-/// Regra de negócio de usuários (registro e login) persistida no SQLite.
-/// Verificação simples: apenas confere se a senha confere. Sem hash/token.
-/// </summary>
 public class UsuarioService
 {
-    /// <summary>Registra um novo usuário. Falha se o nome já existir.</summary>
     public (bool Sucesso, string Mensagem) Registrar(string nome, string senha)
     {
         if (string.IsNullOrWhiteSpace(nome) || string.IsNullOrWhiteSpace(senha))
@@ -34,7 +29,6 @@ public class UsuarioService
         }
     }
 
-    /// <summary>Valida as credenciais do usuário.</summary>
     public (bool Sucesso, string Mensagem) Login(string nome, string senha)
     {
         if (string.IsNullOrWhiteSpace(nome) || string.IsNullOrWhiteSpace(senha))

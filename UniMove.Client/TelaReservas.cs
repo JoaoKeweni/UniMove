@@ -2,11 +2,6 @@ using UniMove.Shared;
 
 namespace UniMove.Client;
 
-/// <summary>
-/// Painel pessoal do usuário: mostra apenas as caronas em que ele está
-/// envolvido — as que ele ofereceu (como motorista) e as que ele reservou
-/// (como passageiro) — indicando o papel dele em cada uma.
-/// </summary>
 public class TelaReservas : Form
 {
     private readonly SocketCliente _cliente;

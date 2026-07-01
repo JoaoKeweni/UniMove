@@ -4,10 +4,6 @@ using UniMove.Shared;
 
 namespace UniMove.Server;
 
-/// <summary>
-/// Atende um único cliente conectado, lendo mensagens JSON delimitadas por
-/// quebra de linha e delegando cada operação para os serviços de negócio.
-/// </summary>
 public class ClienteHandler
 {
     private readonly TcpClient _cliente;
@@ -26,7 +22,6 @@ public class ClienteHandler
         _endereco = cliente.Client.RemoteEndPoint?.ToString() ?? "desconhecido";
     }
 
-    /// <summary>Loop principal de atendimento do cliente.</summary>
     public void Atender()
     {
         Log($"Cliente conectado. ({_endereco})");

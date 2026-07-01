@@ -4,17 +4,11 @@ using UniMove.Shared;
 
 namespace UniMove.Client;
 
-/// <summary>
-/// Cliente TCP responsável por enviar mensagens ao servidor e ler a resposta.
-/// Utiliza uma conexão por requisição (padrão request/response), o que mantém
-/// o código simples e adequado para a demonstração.
-/// </summary>
 public class SocketCliente
 {
     public string Host { get; set; } = "127.0.0.1";
     public int Porta { get; set; } = 5000;
 
-    /// <summary>Envia uma mensagem e retorna a resposta do servidor.</summary>
     public Mensagem Enviar(Mensagem mensagem)
     {
         using var cliente = new TcpClient();

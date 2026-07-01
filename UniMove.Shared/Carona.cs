@@ -1,8 +1,5 @@
 namespace UniMove.Shared;
 
-/// <summary>
-/// Representa uma carona publicada por um motorista.
-/// </summary>
 public class Carona
 {
     public int Id { get; set; }

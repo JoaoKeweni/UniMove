@@ -3,7 +3,6 @@ using UniMove.Shared;
 
 namespace UniMove.Server;
 
-/// <summary>Resultado de uma tentativa de reservar vaga em uma carona.</summary>
 public enum ResultadoVaga
 {
     Reservada,
@@ -11,13 +10,8 @@ public enum ResultadoVaga
     CaronaNaoEncontrada
 }
 
-/// <summary>
-/// Regra de negócio das caronas, persistida no SQLite.
-/// O acesso de escrita é serializado por <see cref="Banco.Lock"/>.
-/// </summary>
 public class CaronaService
 {
-    /// <summary>Publica uma nova carona e retorna com o Id gerado pelo banco.</summary>
     public Carona Publicar(Carona carona)
     {
         lock (Banco.Lock)
@@ -39,11 +33,6 @@ public class CaronaService
         }
     }
 
-    /// <summary>
-    /// Retorna as caronas cadastradas. Se <paramref name="destino"/> for
-    /// informado, filtra pelo campus de destino (independente da origem).
-    /// Se <paramref name="apenasComVagas"/> for true, oculta caronas lotadas.
-    /// </summary>
     public List<Carona> Listar(string? destino = null, bool apenasComVagas = false)
     {
         lock (Banco.Lock)
@@ -83,7 +72,6 @@ public class CaronaService
         }
     }
 
-    /// <summary>Tenta reservar uma vaga, diminuindo o número de vagas de forma atômica.</summary>
     public ResultadoVaga ReservarVaga(int idCarona)
     {
         lock (Banco.Lock)

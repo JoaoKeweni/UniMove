@@ -2,11 +2,6 @@ using UniMove.Shared;
 
 namespace UniMove.Client;
 
-/// <summary>
-/// Tela de entrada: login e registro simples (nome + senha).
-/// Em caso de login bem-sucedido, define <see cref="NomeUsuario"/> e fecha
-/// com DialogResult.OK para que o programa abra a tela principal.
-/// </summary>
 public class TelaLogin : Form
 {
     private readonly SocketCliente _cliente;
@@ -34,7 +29,6 @@ public class TelaLogin : Form
         UseSystemPasswordChar = true
     };
 
-    /// <summary>Nome do usuário autenticado (válido após login com sucesso).</summary>
     public string NomeUsuario { get; private set; } = string.Empty;
 
     public TelaLogin(SocketCliente cliente)

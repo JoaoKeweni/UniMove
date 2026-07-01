@@ -3,10 +3,6 @@ using System.Net.Sockets;
 
 namespace UniMove.Server;
 
-/// <summary>
-/// Servidor TCP que aceita múltiplos clientes simultaneamente.
-/// Cada conexão é atendida por um <see cref="ClienteHandler"/> em uma Task própria.
-/// </summary>
 public class SocketServidor
 {
     private readonly TcpListener _listener;
@@ -19,7 +15,6 @@ public class SocketServidor
         _listener = new TcpListener(IPAddress.Any, porta);
     }
 
-    /// <summary>Inicia o loop de aceitação de conexões (bloqueante).</summary>
     public async Task IniciarAsync()
     {
         Banco.Inicializar();

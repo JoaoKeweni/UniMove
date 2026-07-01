@@ -2,7 +2,6 @@ using System.Drawing.Drawing2D;
 
 namespace UniMove.Client;
 
-/// <summary>Paleta e componentes visuais compartilhados pelas telas.</summary>
 public static class Ui
 {
     public static readonly Color Azul = Color.FromArgb(0, 108, 194);
@@ -17,7 +16,6 @@ public static class Ui
     public static readonly Font FonteCampo = new("Segoe UI", 11F);
     public static readonly Font FonteRotulo = new("Segoe UI", 10F, FontStyle.Regular);
 
-    /// <summary>Cria um botão arredondado, com estilo achatado e moderno.</summary>
     public static Button BotaoArredondado(string texto, Color cor, int largura, int altura)
     {
         var botao = new Button
@@ -39,7 +37,6 @@ public static class Ui
         return botao;
     }
 
-    /// <summary>Aplica uma região de cantos arredondados ao controle.</summary>
     public static void AplicarBordaArredondada(Control controle, int raio)
     {
         using var caminho = new GraphicsPath();

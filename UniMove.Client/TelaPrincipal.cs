@@ -1,6 +1,5 @@
 namespace UniMove.Client;
 
-/// <summary>Tela inicial: título UniMove e os dois botões principais.</summary>
 public class TelaPrincipal : Form
 {
     private readonly SocketCliente _cliente;

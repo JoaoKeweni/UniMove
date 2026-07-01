@@ -3,16 +3,8 @@ using UniMove.Shared;
 
 namespace UniMove.Server;
 
-/// <summary>
-/// Regra de negócio das reservas, persistida no SQLite.
-/// A reserva (checagem de vaga + decremento + registro) é feita numa única
-/// transação, protegida por <see cref="Banco.Lock"/>.
-/// </summary>
 public class ReservaService
 {
-    /// <summary>
-    /// Tenta registrar uma reserva. Retorna sucesso e uma mensagem descritiva.
-    /// </summary>
     public (bool Sucesso, string Mensagem) Reservar(Reserva reserva)
     {
         lock (Banco.Lock)
@@ -51,7 +43,6 @@ public class ReservaService
         }
     }
 
-    /// <summary>Retorna os nomes dos passageiros que reservaram vaga na carona informada.</summary>
     public List<string> Passageiros(int idCarona)
     {
         lock (Banco.Lock)

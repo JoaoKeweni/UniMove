@@ -2,11 +2,6 @@ using UniMove.Shared;
 
 namespace UniMove.Client;
 
-/// <summary>
-/// Tela para buscar caronas por campus de destino e reservar uma vaga.
-/// A busca é feita pelo local aonde o passageiro quer chegar, independente
-/// da origem do motorista.
-/// </summary>
 public class TelaBuscar : Form
 {
     private const string TodosOsCampi = "Todos os campi";

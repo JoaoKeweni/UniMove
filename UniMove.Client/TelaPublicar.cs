@@ -2,7 +2,6 @@ using UniMove.Shared;
 
 namespace UniMove.Client;
 
-/// <summary>Tela para publicar uma nova carona rumo a um campus.</summary>
 public class TelaPublicar : Form
 {
     private readonly SocketCliente _cliente;
