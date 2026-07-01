@@ -1,0 +1,16 @@
+# Build output
+bin/
+obj/
+
+# SQLite database gerado em tempo de execução
+*.db
+*.db-shm
+*.db-wal
+
+# Visual Studio / Rider
+.vs/
+.idea/
+*.user
+
+# Logs
+*.log
