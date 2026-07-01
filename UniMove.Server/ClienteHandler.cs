@@ -75,7 +75,7 @@ public class ClienteHandler
                 Operacao.Publicar => TratarPublicar(mensagem),
                 Operacao.Buscar => TratarBuscar(mensagem),
                 Operacao.Reservar => TratarReservar(mensagem),
-                Operacao.Reservas => TratarReservas(),
+                Operacao.Reservas => TratarReservas(mensagem),
                 Operacao.Registrar => TratarRegistrar(mensagem),
                 Operacao.Login => TratarLogin(mensagem),
                 _ => Mensagem.Texto(Operacao.Erro, "Operação não suportada.")
@@ -107,22 +107,30 @@ public class ClienteHandler
     {
         string destino = mensagem.Dados?.Trim() ?? string.Empty;
         Log(string.IsNullOrEmpty(destino)
-            ? "Buscando caronas (todos os campi)..."
-            : $"Buscando caronas para '{destino}'...");
+            ? "Buscando caronas com vagas (todos os campi)..."
+            : $"Buscando caronas com vagas para '{destino}'...");
 
-        List<Carona> caronas = _caronaService.Listar(destino);
+        // Na busca, só aparecem caronas com vagas disponíveis.
+        List<Carona> caronas = _caronaService.Listar(destino, apenasComVagas: true);
         return Mensagem.Criar(Operacao.Resposta, caronas);
     }
 
-    private Mensagem TratarReservas()
+    private Mensagem TratarReservas(Mensagem mensagem)
     {
-        Log("Listando reservas (painel motorista/passageiros)...");
+        string usuario = mensagem.Dados?.Trim() ?? string.Empty;
+        Log($"Painel de reservas do usuário '{usuario}'...");
+
+        // Mostra apenas as caronas em que o usuário está envolvido:
+        // as que ele ofereceu (motorista) e as que ele reservou (passageiro).
         List<CaronaComReservas> painel = _caronaService.Listar()
             .Select(c => new CaronaComReservas
             {
                 Carona = c,
                 Passageiros = _reservaService.Passageiros(c.Id)
             })
+            .Where(item => string.IsNullOrEmpty(usuario)
+                        || item.Carona.Motorista == usuario
+                        || item.Passageiros.Contains(usuario))
             .ToList();
 
         return Mensagem.Criar(Operacao.Resposta, painel);

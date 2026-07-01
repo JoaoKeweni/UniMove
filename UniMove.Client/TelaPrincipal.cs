@@ -48,7 +48,7 @@ public class TelaPrincipal : Form
 
         btnPublicar.Click += (_, _) => new TelaPublicar(_cliente, _nomeUsuario).ShowDialog(this);
         btnBuscar.Click += (_, _) => new TelaBuscar(_cliente, _nomeUsuario).ShowDialog(this);
-        btnReservas.Click += (_, _) => new TelaReservas(_cliente).ShowDialog(this);
+        btnReservas.Click += (_, _) => new TelaReservas(_cliente, _nomeUsuario).ShowDialog(this);
 
         var painel = new FlowLayoutPanel
         {

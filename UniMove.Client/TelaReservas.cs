@@ -3,18 +3,20 @@ using UniMove.Shared;
 namespace UniMove.Client;
 
 /// <summary>
-/// Painel que mostra, para cada carona, quem ofereceu (motorista) e
-/// quem reservou (passageiros). Útil tanto para o motorista quanto para
-/// os passageiros acompanharem as reservas.
+/// Painel pessoal do usuário: mostra apenas as caronas em que ele está
+/// envolvido — as que ele ofereceu (como motorista) e as que ele reservou
+/// (como passageiro) — indicando o papel dele em cada uma.
 /// </summary>
 public class TelaReservas : Form
 {
     private readonly SocketCliente _cliente;
+    private readonly string _nomeUsuario;
     private readonly DataGridView _grade = new();
 
-    public TelaReservas(SocketCliente cliente)
+    public TelaReservas(SocketCliente cliente, string nomeUsuario)
     {
         _cliente = cliente;
+        _nomeUsuario = nomeUsuario;
         ConfigurarJanela();
         ConstruirLayout();
         Load += (_, _) => Atualizar();
@@ -72,6 +74,8 @@ public class TelaReservas : Form
         _grade.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
 
         _grade.Columns.Add(new DataGridViewTextBoxColumn
+        { Name = "Papel", HeaderText = "Seu papel", FillWeight = 90 });
+        _grade.Columns.Add(new DataGridViewTextBoxColumn
         { Name = "Motorista", HeaderText = "Ofereceu (Motorista)", FillWeight = 120 });
         _grade.Columns.Add(new DataGridViewTextBoxColumn
         { Name = "Trajeto", HeaderText = "Trajeto", FillWeight = 140 });
@@ -87,7 +91,7 @@ public class TelaReservas : Form
     {
         try
         {
-            Mensagem resposta = _cliente.Enviar(Mensagem.Texto(Operacao.Reservas, string.Empty));
+            Mensagem resposta = _cliente.Enviar(Mensagem.Texto(Operacao.Reservas, _nomeUsuario));
             if (resposta.Operacao != Operacao.Resposta)
             {
                 Aviso(resposta.Dados);
@@ -104,8 +108,10 @@ public class TelaReservas : Form
                 string passageiros = item.Passageiros.Count > 0
                     ? string.Join(", ", item.Passageiros)
                     : "— nenhuma reserva —";
+                string papel = c.Motorista == _nomeUsuario ? "Motorista" : "Passageiro";
 
                 _grade.Rows.Add(
+                    papel,
                     c.Motorista,
                     $"{c.Origem} → {c.Destino}",
                     c.Horario,

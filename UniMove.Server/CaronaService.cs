@@ -41,22 +41,29 @@ public class CaronaService
 
     /// <summary>
     /// Retorna as caronas cadastradas. Se <paramref name="destino"/> for
-    /// informado, filtra apenas as caronas que vão para aquele campus
-    /// (independente da origem do motorista).
+    /// informado, filtra pelo campus de destino (independente da origem).
+    /// Se <paramref name="apenasComVagas"/> for true, oculta caronas lotadas.
     /// </summary>
-    public List<Carona> Listar(string? destino = null)
+    public List<Carona> Listar(string? destino = null, bool apenasComVagas = false)
     {
         lock (Banco.Lock)
         {
             using SqliteConnection conexao = Banco.Abrir();
             SqliteCommand cmd = conexao.CreateCommand();
 
-            bool filtrar = !string.IsNullOrWhiteSpace(destino);
-            cmd.CommandText = filtrar
-                ? "SELECT Id, Motorista, Origem, Destino, Horario, Vagas FROM Caronas WHERE Destino = $d ORDER BY Id"
-                : "SELECT Id, Motorista, Origem, Destino, Horario, Vagas FROM Caronas ORDER BY Id";
-            if (filtrar)
+            var condicoes = new List<string>();
+            bool filtrarDestino = !string.IsNullOrWhiteSpace(destino);
+            if (filtrarDestino)
+            {
+                condicoes.Add("Destino = $d");
                 cmd.Parameters.AddWithValue("$d", destino!);
+            }
+            if (apenasComVagas)
+                condicoes.Add("Vagas > 0");
+
+            string where = condicoes.Count > 0 ? " WHERE " + string.Join(" AND ", condicoes) : string.Empty;
+            cmd.CommandText =
+                $"SELECT Id, Motorista, Origem, Destino, Horario, Vagas FROM Caronas{where} ORDER BY Id";
 
             var caronas = new List<Carona>();
             using SqliteDataReader leitor = cmd.ExecuteReader();
