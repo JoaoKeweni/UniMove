@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport" />
+    <title>UniMove - Home</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Manrope:wght@600;700&amp;family=JetBrains+Mono:wght@700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#404752",
+                        "inverse-on-surface": "#2d3137",
+                        "surface-bright": "#353940",
+                        "on-secondary-fixed": "#410001",
+                        "on-secondary-fixed-variant": "#930005",
+                        "on-secondary-container": "#ffb3a9",
+                        "tertiary": "#ffb870",
+                        "surface-tint": "#9ecaff",
+                        "on-tertiary-fixed-variant": "#693c00",
+                        "on-tertiary": "#4a2800",
+                        "surface-container-low": "#181c22",
+                        "secondary": "#ffb4a9",
+                        "on-tertiary-fixed": "#2c1600",
+                        "secondary-container": "#a90107",
+                        "primary": "#2196f3",
+                        "on-secondary": "#690002",
+                        "surface-dim": "#0f1419",
+                        "on-primary-container": "#002c4f",
+                        "on-primary-fixed": "#001d36",
+                        "on-surface": "#dfe2ea",
+                        "tertiary-fixed-dim": "#ffb870",
+                        "error-container": "#93000a",
+                        "primary-fixed-dim": "#9ecaff",
+                        "on-background": "#dfe2ea",
+                        "background": "#0f1419",
+                        "primary-fixed": "#d1e4ff",
+                        "secondary-fixed-dim": "#ffb4a9",
+                        "tertiary-container": "#d37d00",
+                        "surface-container": "#1c2026",
+                        "secondary-fixed": "#ffdad5",
+                        "inverse-primary": "#0061a4",
+                        "surface-container-high": "#262a30",
+                        "inverse-surface": "#dfe2ea",
+                        "outline": "#89919d",
+                        "surface-variant": "#31353b",
+                        "on-error": "#690005",
+                        "surface-container-lowest": "#0a0e14",
+                        "on-tertiary-container": "#422300",
+                        "tertiary-fixed": "#ffdcbe",
+                        "error": "#ffb4ab",
+                        "primary-container": "#2196f3",
+                        "on-error-container": "#ffdad6",
+                        "on-primary": "#003258",
+                        "surface-container-highest": "#31353b",
+                        "on-surface-variant": "#bfc7d4",
+                        "on-primary-fixed-variant": "#00497d",
+                        "surface": "#0f1419"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "base": "4px",
+                        "xl": "32px",
+                        "margin": "16px",
+                        "sm": "8px",
+                        "gutter": "16px",
+                        "lg": "24px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-caps": ["JetBrains Mono"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Manrope"],
+                        "callout": ["Inter"],
+                        "headline-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "callout": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0f1419;
+            color: #dfe2ea;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .glass-effect {
+            background: rgba(28, 32, 38, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="font-body-md selection:bg-primary/30">
+    <!-- Top AppBar -->
+    <header
+        class="bg-background dark:bg-background fixed top-0 w-full z-40 border-b border-outline-variant/20 flex justify-between items-center w-full px-margin h-16">
+        <div class="flex items-center gap-3">
+            <div class="relative">
+                <img alt="Prof. Anderson" class="w-10 h-10 rounded-full border border-outline-variant/30"
+                    data-alt="A professional close-up portrait of a middle-aged university professor with a kind smile and spectacles, wearing a dark navy blazer. The lighting is soft and cinematic, set against a blurred background of a modern academic library. The aesthetic is sophisticated and high-contrast, perfectly aligning with a dark-themed, premium university application interface."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR3SPAy-gZzgZrNF5fGcG9599QW3L4Q1AQFfhvM1aptjPhEioJqZEm8nnFMIQTItqIWFDntGVBTIK-JtfoQ8jBGze0o88smKwUXlPRxLgNQaxdtQRyHL6o4Xozh9jKC5dia_uOY_zTK6W7LnSMM3ADJpC6Z5vM6tXxGM5SyMhPFe5FHQX-7epFt_6vOf6hx0jeTWUTCry9DPa4G1xA5qbm428OGeSvhq5HEgcVmGMywNJnBEoHz1F_pEsueo8xhNEOEaF3bISti4IJ" />
+                <div
+                    class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-green-500 border-2 border-background rounded-full">
+                </div>
+            </div>
+            <div>
+                <p class="font-label-caps text-[10px] text-on-surface-variant uppercase tracking-widest">Professor</p>
+                <h1 class="font-headline-md text-headline-md-mobile text-primary">Anderson</h1>
+            </div>
+        </div>
+        <div class="flex items-center gap-2">
+            <button
+                class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-highest/10 transition-transform active:scale-95">
+                <span class="material-symbols-outlined text-on-surface-variant">search</span>
+            </button>
+            <div class="relative">
+                <button
+                    class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-highest/10 transition-transform active:scale-95">
+                    <span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+                </button>
+                <span class="absolute top-2 right-2 w-2 h-2 bg-secondary rounded-full"></span>
+            </div>
+        </div>
+    </header>
+    <main class="pt-20 pb-32 px-margin max-w-2xl mx-auto">
+        <!-- Hero Section -->
+        <section class="mb-lg">
+            <h2 class="font-headline-lg text-headline-lg-mobile mb-md leading-tight">
+                Para qual campus você vai hoje?
+            </h2>
+            <div class="space-y-sm">
+                <!-- Campus Selector -->
+                <div class="relative group">
+                    <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                        <span class="material-symbols-outlined text-primary">location_on</span>
+                    </div>
+                    <select
+                        class="w-full bg-surface-container-lowest border border-outline-variant/30 text-on-surface font-body-lg rounded-xl pl-12 pr-4 py-4 appearance-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all cursor-pointer">
+                        <option value="itabaiana">Campus Itabaiana</option>
+                        <option selected="" value="sao_cristovao">Campus São Cristóvão</option>
+                        <option value="lagarto">Campus Lagarto</option>
+                        <option value="laranjeiras">Campus Laranjeiras</option>
+                    </select>
+                    <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                        <span class="material-symbols-outlined text-on-surface-variant">expand_more</span>
+                    </div>
+                </div>
+                <!-- Primary Action -->
+                <button
+                    class="w-full bg-primary-container text-on-primary-container py-4 rounded-xl font-headline-md flex items-center justify-center gap-2 shadow-lg shadow-primary/20 active:scale-[0.98] transition-all">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">search</span>
+                    Buscar Caronas
+                </button>
+            </div>
+        </section>
+        <!-- Categories/Quick Links (Optional but adds to modern look) -->
+        <div class="flex gap-sm mb-lg overflow-x-auto custom-scrollbar pb-2">
+            <button
+                class="flex-shrink-0 px-4 py-2 bg-surface-container-highest/20 border border-outline-variant/20 rounded-full text-label-caps text-on-surface-variant hover:border-primary/50 transition-colors">FAVORITOS</button>
+            <button
+                class="flex-shrink-0 px-4 py-2 bg-surface-container-highest/20 border border-outline-variant/20 rounded-full text-label-caps text-on-surface-variant hover:border-primary/50 transition-colors">RECENTES</button>
+            <button
+                class="flex-shrink-0 px-4 py-2 bg-surface-container-highest/20 border border-outline-variant/20 rounded-full text-label-caps text-on-surface-variant hover:border-primary/50 transition-colors">PONTUAIS</button>
+        </div>
+        <!-- Main Content -->
+        <section>
+            <div class="flex justify-between items-end mb-md">
+                <h3 class="font-headline-md text-on-surface">Caronas Disponíveis Agora</h3>
+                <button class="text-primary font-label-caps text-[12px] hover:underline">VER TODAS</button>
+            </div>
+            <div class="space-y-md">
+                <!-- Ride Card 1 -->
+                <div
+                    class="bg-surface-container dark:bg-surface-container rounded-xl overflow-hidden relative border-l-4 border-primary group hover:bg-surface-container-high transition-colors">
+                    <div class="p-md">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex items-center gap-3">
+                                <img alt="Driver 1" class="w-12 h-12 rounded-full"
+                                    data-alt="Close-up portrait of a friendly young male university student with short dark hair, wearing a clean white t-shirt. He has a warm smile, conveying trust and safety. The photo is set in a vibrant outdoor university campus during golden hour, maintaining a high-contrast dark aesthetic with professional lighting."
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCshYh1D03tuusidm_97PBBy9MV6VpsgaulGFCHroyCH4maTPomyd83Da-FJBH-N0uMBLio4A5TNehJUk4wieDU9jISLM6waQ2j2bVjlNQMUaGzM9cFtHqF_RzjKR3mUQrFKlC_4cxfT5u9ang27gV4EjE2MKru7FnMfoWCtXCw6g6muMzCNNfUZ1JLCa4eX9VxxZcIagxA1pEu7pXQYd4_wD-eFU1gIa-oYa3eJ6uTfCXTLb7Wr9tMwdsWTbHXKOkzILK5W4Oesht3" />
+                                <div>
+                                    <h4 class="font-body-lg font-bold text-on-surface">Marcos Silva</h4>
+                                    <div class="flex items-center gap-1 text-tertiary">
+                                        <span class="material-symbols-outlined text-[16px]"
+                                            style="font-variation-settings: 'FILL' 1;">star</span>
+                                        <span class="text-label-caps">4.9</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="bg-primary/10 text-primary px-3 py-1 rounded-full text-label-caps border border-primary/20">
+                                3 VAGAS
+                            </div>
+                        </div>
+                        <div class="relative space-y-4 mb-6">
+                            <div class="flex gap-4 items-start">
+                                <div class="flex flex-col items-center pt-1.5">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-outline-variant"></div>
+                                    <div class="w-0.5 h-10 bg-outline-variant/30"></div>
+                                    <div class="w-2.5 h-2.5 rounded-full bg-primary"></div>
+                                </div>
+                                <div class="flex-1 space-y-4">
+                                    <div>
+                                        <p class="font-label-caps text-on-surface-variant text-[10px] mb-0.5">ORIGEM</p>
+                                        <p class="text-body-md">Centro Plaza</p>
+                                    </div>
+                                    <div>
+                                        <p class="font-label-caps text-on-surface-variant text-[10px] mb-0.5">DESTINO
+                                        </p>
+                                        <p class="text-body-md font-bold">Campus Itabaiana</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div
+                                        class="bg-secondary-container/30 text-secondary px-2 py-1 rounded font-label-caps text-[12px] mb-1">
+                                        09:15h
+                                    </div>
+                                    <div class="text-on-surface-variant text-[12px]">
+                                        10:45h
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button
+                            class="w-full py-3 border border-outline-variant/30 rounded-lg font-callout text-on-surface-variant hover:bg-surface-container-highest/20 transition-all active:scale-[0.98]">
+                            Ver Detalhes
+                        </button>
+                    </div>
+                </div>
+                <!-- Ride Card 2 -->
+                <div
+                    class="bg-surface-container dark:bg-surface-container rounded-xl overflow-hidden relative border-l-4 border-tertiary group hover:bg-surface-container-high transition-colors">
+                    <div class="p-md">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex items-center gap-3">
+                                <img alt="Driver 2" class="w-12 h-12 rounded-full"
+                                    data-alt="A portrait of a cheerful young woman with long wavy hair, wearing a stylish denim jacket. She is smiling naturally, radiating reliability and friendliness. The background shows a modern architecture building at a university campus under clear blue sky. Professional high-contrast photography with a dark theme emphasis."
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuANXk7ymF3E4vjniSflnlq6j4Wx34jzplKfWt33YlzokYP-M1CsPmlyCOuvR4CZ-ze8b53LYVDiKy9SBE49P7AOHx0Z5asC4SHX5vwwk29e0OTOa1J_CTpK1uO08mjTuUvpdHfVYnMtj06niAXQFixbl-GtO9fz3s2r8nyefh1b-LQQ-JvpoO6Z5M4zGrwsZMV5gI_dXe_m7z36YsWo32PCarEiqjmQDtbyQOCwaflh0t6bgDbVWe7NzdCy_p6jUrPMkd6i0TZcUO3g" />
+                                <div>
+                                    <h4 class="font-body-lg font-bold text-on-surface">Ana Costa</h4>
+                                    <div class="flex items-center gap-1 text-tertiary">
+                                        <span class="material-symbols-outlined text-[16px]"
+                                            style="font-variation-settings: 'FILL' 1;">star</span>
+                                        <span class="text-label-caps">4.8</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="bg-error/10 text-error px-3 py-1 rounded-full text-label-caps border border-error/20">
+                                1 VAGA
+                            </div>
+                        </div>
+                        <div class="relative space-y-4 mb-6">
+                            <div class="flex gap-4 items-start">
+                                <div class="flex flex-col items-center pt-1.5">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-outline-variant"></div>
+                                    <div class="w-0.5 h-10 bg-outline-variant/30"></div>
+                                    <div class="w-2.5 h-2.5 rounded-full bg-primary"></div>
+                                </div>
+                                <div class="flex-1 space-y-4">
+                                    <div>
+                                        <p class="font-label-caps text-on-surface-variant text-[10px] mb-0.5">ORIGEM</p>
+                                        <p class="text-body-md">Terminal D.I.A</p>
+                                    </div>
+                                    <div>
+                                        <p class="font-label-caps text-on-surface-variant text-[10px] mb-0.5">DESTINO
+                                        </p>
+                                        <p class="text-body-md font-bold">Campus Laranjeiras</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div
+                                        class="bg-secondary-container/30 text-secondary px-2 py-1 rounded font-label-caps text-[12px] mb-1">
+                                        13:00h
+                                    </div>
+                                    <div class="text-on-surface-variant text-[12px]">
+                                        13:40h
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button
+                            class="w-full py-3 border border-outline-variant/30 rounded-lg font-callout text-on-surface-variant hover:bg-surface-container-highest/20 transition-all active:scale-[0.98]">
+                            Ver Detalhes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- FAB -->
+    <button
+        class="fixed bottom-24 right-margin flex items-center gap-2 bg-primary text-on-primary px-6 py-4 rounded-full shadow-2xl shadow-primary/40 active:scale-90 transition-all z-40">
+        <span class="material-symbols-outlined">directions_car</span>
+        <span class="font-callout">Oferecer Carona</span>
+    </button>
+    <!-- Bottom Navigation -->
+    <nav
+        class="bg-surface-container-low dark:bg-surface-container-low fixed bottom-0 w-full z-50 border-t border-outline-variant/20 fixed bottom-0 left-0 w-full flex justify-around items-center h-20 pb-safe px-gutter">
+        <a class="flex flex-col items-center justify-center text-primary dark:text-primary font-bold active:scale-90 duration-150 ease-in-out"
+            href="#">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+            <span class="font-label-caps text-[10px] mt-1">Home</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest/20"
+            href="#">
+            <span class="material-symbols-outlined">directions_car</span>
+            <span class="font-label-caps text-[10px] mt-1">Rides</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest/20"
+            href="#">
+            <span class="material-symbols-outlined">chat_bubble</span>
+            <span class="font-label-caps text-[10px] mt-1">Mensagens</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest/20"
+            href="#">
+            <span class="material-symbols-outlined">person</span>
+            <span class="font-label-caps text-[10px] mt-1">Perfil</span>
+        </a>
+    </nav>
+    <!-- Success Feedback Overlay (Hidden) -->
+    <div class="fixed inset-0 pointer-events-none z-50 flex items-center justify-center bg-black/50 opacity-0 transition-opacity"
+        id="feedback">
+        <div class="bg-surface-container-high p-lg rounded-2xl flex flex-col items-center">
+            <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-md">
+                <span class="material-symbols-outlined text-on-primary text-4xl">check</span>
+            </div>
+            <p class="font-headline-md">Solicitação Enviada!</p>
+        </div>
+    </div>
+    <script>
+        // Simple Interaction logic
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                if (this.innerText.includes('Ver Detalhes')) {
+                    const feedback = document.getElementById('feedback');
+                    feedback.classList.remove('opacity-0');
+                    feedback.classList.add('opacity-100');
+                    setTimeout(() => {
+                        feedback.classList.remove('opacity-100');
+                        feedback.classList.add('opacity-0');
+                    }, 1500);
+                }
+            });
+        });
+
+        // Safe Area handling
+        function updateSafeAreas() {
+            const bottomNav = document.querySelector('nav');
+            const safeAreaBottom = getComputedStyle(document.documentElement).getPropertyValue('--safe-area-inset-bottom');
+            if (safeAreaBottom) {
+                bottomNav.style.paddingBottom = safeAreaBottom;
+            }
+        }
+        window.addEventListener('resize', updateSafeAreas);
+        updateSafeAreas();
+    </script>
+</body>
+
+</html>
