@@ -11,6 +11,14 @@ public class TelaLogin : Form
 {
     private readonly SocketCliente _cliente;
 
+    private readonly TextBox _txtServidor = new()
+    {
+        Font = Ui.FonteCampo,
+        Width = 300,
+        BorderStyle = BorderStyle.FixedSingle,
+        Text = "127.0.0.1"
+    };
+
     private readonly TextBox _txtNome = new()
     {
         Font = Ui.FonteCampo,
@@ -40,7 +48,7 @@ public class TelaLogin : Form
     {
         Text = "UniMove - Acesso";
         BackColor = Ui.Fundo;
-        Size = new Size(440, 460);
+        Size = new Size(440, 540);
         FormBorderStyle = FormBorderStyle.FixedSingle;
         MaximizeBox = false;
         StartPosition = FormStartPosition.CenterScreen;
@@ -59,6 +67,8 @@ public class TelaLogin : Form
         };
         painel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
 
+        painel.Controls.Add(Rotulo("Servidor (IP)"));
+        painel.Controls.Add(_txtServidor);
         painel.Controls.Add(Rotulo("Nome"));
         painel.Controls.Add(_txtNome);
         painel.Controls.Add(Rotulo("Senha"));
@@ -83,6 +93,7 @@ public class TelaLogin : Form
 
     private void Entrar()
     {
+        AplicarServidor();
         Usuario? credenciais = LerCredenciais();
         if (credenciais is null) return;
 
@@ -108,6 +119,7 @@ public class TelaLogin : Form
 
     private void Registrar()
     {
+        AplicarServidor();
         Usuario? credenciais = LerCredenciais();
         if (credenciais is null) return;
 
@@ -123,6 +135,12 @@ public class TelaLogin : Form
         {
             Aviso($"Não foi possível conectar ao servidor.\n{ex.Message}");
         }
+    }
+
+    private void AplicarServidor()
+    {
+        string host = _txtServidor.Text.Trim();
+        _cliente.Host = string.IsNullOrEmpty(host) ? "127.0.0.1" : host;
     }
 
     private Usuario? LerCredenciais()
